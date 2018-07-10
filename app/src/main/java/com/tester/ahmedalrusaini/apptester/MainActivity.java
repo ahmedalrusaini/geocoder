@@ -13,10 +13,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView lbl=findViewById(R.id.id);
         try {
-            List city = new Geocoder(this).getFromLocation(50,50,1);
-            Address address= (Address) city.get(0);
-            String Country = address.getCountryName();
-            lbl.setText(Country);
+            List list = new Geocoder(this).getFromLocation(26.35806861,43.98718053,1);
+            Address address= (Address) list.get(0);
+
+            String stringLocation = "";
+
+            String getCountryName = address.getCountryName();
+            String getCountryCode = address.getCountryCode();
+
+            String getAdminArea = address.getAdminArea();
+            String getSubAdminArea = address.getSubAdminArea();
+
+            String getLocality = address.getLocality();
+            String getSubLocality = address.getSubLocality();
+
+            String getThoroughfare = address.getThoroughfare();
+            String getSubThoroughfare = address.getSubThoroughfare();
+
+            String getAddressLine = address.getAddressLine(0);
+
+            String getFeatureName = address.getFeatureName();
+            String getPremises = address.getPremises();
+
+            String getPhone = address.getPhone();
+            String getPostalCode = address.getPostalCode();
+
+            String getUrl = address.getUrl();
+
+            stringLocation += "getCountryName:" + getCountryName + "\n";
+            stringLocation += "getCountryCode:" + getCountryCode + "\n";
+            stringLocation += "getAdminArea:" + getAdminArea + "\n";
+            stringLocation += "getSubAdminArea:" + getSubAdminArea + "\n";
+            stringLocation += "getLocality:" + getLocality + "\n";
+            stringLocation += "getSubLocality:" + getSubLocality + "\n";
+            stringLocation += "getThoroughfare:" + getThoroughfare + "\n";
+            stringLocation += "getSubThoroughfare:" + getSubThoroughfare + "\n";
+            stringLocation += "getAddressLine:" + getAddressLine + "\n";
+            stringLocation += "getFeatureName:" + getFeatureName + "\n";
+            stringLocation += "getPremises:" + getPremises + "\n";
+            stringLocation += "getPhone:" + getPhone + "\n";
+            stringLocation += "getPostalCode:" + getPostalCode + "\n";
+            stringLocation += "getUrl:" + getUrl + "\n";
+
+            lbl.setText(stringLocation);
         } catch (IOException e) {
             e.printStackTrace();
         }
